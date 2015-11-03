@@ -13,16 +13,16 @@ import java.util.Date;
  */
 public class Timer {
 
-    private Date currentTime;
+    private Date startTime;
     public Timer() {
-        this.currentTime = new Date();
+        this.startTime = new Date();
     }
 
     public Date getCurrentTime() {
-        return currentTime;
+        return startTime;
     }
 
     public void setCurrentTime(Date currentTime) {
-        this.currentTime = currentTime;
+        this.startTime = currentTime;
     }
 }
