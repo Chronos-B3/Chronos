@@ -1,24 +1,28 @@
 package chronos;
 
+import javax.swing.JLabel;
+
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-
 /**
  *
  * @author sylvain
  */
 public class Chronos extends javax.swing.JFrame {
 
-    private Timer temps = new Timer();
-    
+    private Timer temps;
+
     /**
      * Creates new form NewJFrame
      */
     public Chronos() {
         initComponents();
+
+        jLabelAffichage.setText("00:00");
+        temps = new Timer();
     }
 
     /**
@@ -141,17 +145,17 @@ public class Chronos extends javax.swing.JFrame {
             }
         });
     }
-    
-    public static void debut(){
-        
+
+    private void debut() {
+
     }
-    
-    public static void raz(){
-        
+
+    private void raz() {
+        this.temps = new Timer();
     }
-    
-    public static void stop(){
-        
+
+    private void stop() {
+
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
