@@ -11,7 +11,7 @@ import java.util.Date;
  *
  * @author Nautile
  */
-public class Timer {
+public class Timer implements Runnable{
 
     private Date startTime;
     
@@ -26,4 +26,11 @@ public class Timer {
     public void setCurrentTime(Date currentTime) {
         this.startTime = currentTime;
     }
+
+    @Override
+    public void run() {
+        //code
+    }
+    
+    
 }
