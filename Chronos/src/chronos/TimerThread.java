@@ -5,6 +5,7 @@
  */
 package chronos;
 
+import java.util.Calendar;
 import java.util.Date;
 
 /**
@@ -18,17 +19,28 @@ public class TimerThread extends Thread{
     public TimerThread() {
         this.startTime = new Date();
     }
-
-    public Date getCurrentTime() {
-        return startTime;
-    }
-
-    public void setCurrentTime(Date currentTime) {
-        this.startTime = currentTime;
-    }
-    
     //RAZ = Remise A Zero
     public void raz(){
         
+    }
+    
+    public void run(){
+        Calendar calendar = Calendar.getInstance();
+        calendar.setTime(startTime);
+        int hours = calendar.get(Calendar.HOUR_OF_DAY);
+        int minutes = calendar.get(Calendar.MINUTE);
+        int seconds = calendar.get(Calendar.SECOND);
+        while(true){
+            try{
+                calendar.setTime(new Date());
+            int currentHours = calendar.get(Calendar.HOUR_OF_DAY);
+            int currentMinutes = calendar.get(Calendar.MINUTE);
+            int currentSeconds = calendar.get(Calendar.SECOND);
+                System.out.println((currentHours-hours)+":"+(currentMinutes-minutes)+":"+(currentSeconds-seconds));
+            }
+            catch(Exception E){
+                System.err.println("erreur : " + E);
+            }
+        }
     }
 }
