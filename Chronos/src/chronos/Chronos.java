@@ -147,7 +147,11 @@ public class Chronos extends javax.swing.JFrame {
     }
 
     private void debut() {
-
+        if(temps.isAlive()){
+            temps.run();
+        }else{
+            temps.start();
+        }
     }
 
     private void raz() {
@@ -155,7 +159,7 @@ public class Chronos extends javax.swing.JFrame {
     }
 
     private void stop() {
-
+        temps.interrupt();
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
