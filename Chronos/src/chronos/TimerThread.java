@@ -12,33 +12,37 @@ import java.util.Date;
  *
  * @author Nautile
  */
-public class TimerThread extends Thread{
+public class TimerThread extends Thread {
 
     private Date startTime;
-    
+
     public TimerThread() {
         this.startTime = new Date();
     }
+
     //RAZ = Remise A Zero
-    public void raz(){
-        
+
+    public void raz() {
+
     }
-    
-    public void run(){
+
+    public void run() {
         Calendar calendar = Calendar.getInstance();
         calendar.setTime(startTime);
         int hours = calendar.get(Calendar.HOUR_OF_DAY);
         int minutes = calendar.get(Calendar.MINUTE);
         int seconds = calendar.get(Calendar.SECOND);
-        while(true){
-            try{
+        int miliseconds = calendar.get(Calendar.MILLISECOND);
+        int currentHours, currentMinutes, currentSeconds, currentMiliseconds;
+        while (true) {
+            try {
                 calendar.setTime(new Date());
-            int currentHours = calendar.get(Calendar.HOUR_OF_DAY);
-            int currentMinutes = calendar.get(Calendar.MINUTE);
-            int currentSeconds = calendar.get(Calendar.SECOND);
-                System.out.println((currentHours-hours)+":"+(currentMinutes-minutes)+":"+(currentSeconds-seconds));
-            }
-            catch(Exception E){
+                currentHours = calendar.get(Calendar.HOUR_OF_DAY);
+                currentMinutes = calendar.get(Calendar.MINUTE);
+                currentSeconds = calendar.get(Calendar.SECOND);
+                currentMiliseconds = calendar.get(Calendar.MILLISECOND);
+                System.out.println((currentHours - hours) + ":" + (currentMinutes - minutes) + ":" + (currentSeconds - seconds) + ":" + (currentSeconds - miliseconds));
+            } catch (Exception E) {
                 System.err.println("erreur : " + E);
             }
         }
