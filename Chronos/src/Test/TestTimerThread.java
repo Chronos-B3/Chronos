@@ -12,8 +12,9 @@ import chronos.TimerThread;
  * @author sylvain
  */
 public class TestTimerThread {
+    static TimerThread temps = new TimerThread();
     public static void main(String[] args){
-        TimerThread temps = new TimerThread();
+        
         
         System.out.println("---TEST DEBUT---");
         System.out.println(temps);
@@ -31,5 +32,9 @@ public class TestTimerThread {
         temps.raz();
         
         System.out.println(temps);
+    }
+    
+    public static boolean getLaunchValue(){
+        return temps.isLaunch;
     }
 }
