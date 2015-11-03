@@ -14,6 +14,7 @@ import java.util.Date;
 public class Timer {
 
     private Date startTime;
+    
     public Timer() {
         this.startTime = new Date();
     }

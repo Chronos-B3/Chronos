@@ -12,6 +12,8 @@ package chronos;
  */
 public class Chronos extends javax.swing.JFrame {
 
+    private Timer temps = new Timer();
+    
     /**
      * Creates new form NewJFrame
      */
@@ -31,6 +33,7 @@ public class Chronos extends javax.swing.JFrame {
         jButtonRun = new javax.swing.JButton();
         jButtonStop = new javax.swing.JButton();
         jButtonRaz = new javax.swing.JButton();
+        jLabelAffichage = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -69,11 +72,17 @@ public class Chronos extends javax.swing.JFrame {
                 .addGap(98, 98, 98)
                 .addComponent(jButtonRaz)
                 .addGap(21, 21, 21))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(110, 110, 110)
+                .addComponent(jLabelAffichage, javax.swing.GroupLayout.PREFERRED_SIZE, 133, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(266, Short.MAX_VALUE)
+                .addGap(103, 103, 103)
+                .addComponent(jLabelAffichage, javax.swing.GroupLayout.PREFERRED_SIZE, 53, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 110, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButtonRun)
                     .addComponent(jButtonStop)
@@ -149,5 +158,6 @@ public class Chronos extends javax.swing.JFrame {
     private javax.swing.JButton jButtonRaz;
     private javax.swing.JButton jButtonRun;
     private javax.swing.JButton jButtonStop;
+    private javax.swing.JLabel jLabelAffichage;
     // End of variables declaration//GEN-END:variables
 }
