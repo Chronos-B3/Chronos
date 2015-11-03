@@ -19,11 +19,13 @@ public class TimerThread extends Thread{
     public TimerThread() {
         this.startTime = new Date();
     }
+    
     //RAZ = Remise A Zero
     public void raz(){
         
     }
     
+    @Override
     public void run(){
         Calendar calendar = Calendar.getInstance();
         calendar.setTime(startTime);

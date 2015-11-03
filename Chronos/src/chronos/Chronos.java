@@ -98,7 +98,7 @@ public class Chronos extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButtonRunActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonRunActionPerformed
-        debut();
+        lance();
     }//GEN-LAST:event_jButtonRunActionPerformed
 
     private void jButtonStopActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonStopActionPerformed
@@ -146,12 +146,16 @@ public class Chronos extends javax.swing.JFrame {
         });
     }
 
-    private void debut() {
-
+    private void lance() {
+        if(temps.isAlive()){
+            temps.run();
+        }else{
+            temps.start();
+        }
     }
 
     private void raz() {
-        this.temps = new TimerThread();
+        temps.raz();
     }
 
     private void stop() {
