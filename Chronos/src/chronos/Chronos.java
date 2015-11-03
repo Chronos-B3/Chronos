@@ -13,7 +13,7 @@ import javax.swing.JLabel;
  */
 public class Chronos extends javax.swing.JFrame {
 
-    private Timer temps;
+    private TimerThread temps;
 
     /**
      * Creates new form NewJFrame
@@ -22,7 +22,7 @@ public class Chronos extends javax.swing.JFrame {
         initComponents();
 
         jLabelAffichage.setText("00:00");
-        temps = new Timer();
+        temps = new TimerThread();
     }
 
     /**
@@ -151,7 +151,7 @@ public class Chronos extends javax.swing.JFrame {
     }
 
     private void raz() {
-        this.temps = new Timer();
+        this.temps = new TimerThread();
     }
 
     private void stop() {

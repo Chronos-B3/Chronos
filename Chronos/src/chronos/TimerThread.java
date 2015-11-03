@@ -11,11 +11,11 @@ import java.util.Date;
  *
  * @author Nautile
  */
-public class Timer implements Runnable{
+public class TimerThread extends Thread{
 
     private Date startTime;
     
-    public Timer() {
+    public TimerThread() {
         this.startTime = new Date();
     }
 
@@ -26,11 +26,9 @@ public class Timer implements Runnable{
     public void setCurrentTime(Date currentTime) {
         this.startTime = currentTime;
     }
-
-    @Override
-    public void run() {
-        //code
+    
+    //RAZ = Remise A Zero
+    public void raz(){
+        
     }
-    
-    
 }
