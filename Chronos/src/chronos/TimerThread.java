@@ -5,6 +5,7 @@
  */
 package chronos;
 
+import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
 
@@ -29,20 +30,15 @@ public class TimerThread extends Thread {
     @Override
     public void run() {
         Calendar calendar = Calendar.getInstance();
-        calendar.setTime(startTime);
-        int hours = calendar.get(Calendar.HOUR_OF_DAY);
-        int minutes = calendar.get(Calendar.MINUTE);
-        int seconds = calendar.get(Calendar.SECOND);
-        int miliseconds = calendar.get(Calendar.MILLISECOND);
-        int currentHours, currentMinutes, currentSeconds, currentMiliseconds;
+        long startTime = System.currentTimeMillis();
         while (true) {
             try {
-                calendar.setTime(new Date());
-                currentHours = calendar.get(Calendar.HOUR_OF_DAY);
-                currentMinutes = calendar.get(Calendar.MINUTE);
-                currentSeconds = calendar.get(Calendar.SECOND);
-                currentMiliseconds = calendar.get(Calendar.MILLISECOND);
-                System.out.println((currentHours - hours) + ":" + (currentMinutes - minutes) + ":" + (currentSeconds - seconds) + ":" + (currentSeconds - miliseconds));
+                long currentTime = System.currentTimeMillis();
+                long yourmilliseconds = currentTime-startTime;
+                SimpleDateFormat formatDate = new SimpleDateFormat("mm:ss");
+                Date resultdate = new Date(yourmilliseconds);              
+                System.out.println(formatDate.format(resultdate));
+                System.out.println();
             } catch (Exception E) {
                 System.err.println("erreur : " + E);
             }
