@@ -15,10 +15,11 @@ import java.util.Date;
  */
 public class TimerThread extends Thread {
 
-    private Date startTime;
+    Calendar calendar = Calendar.getInstance();
+    private long startTime = System.currentTimeMillis();
 
     public TimerThread() {
-        this.startTime = new Date();
+        this.startTime = System.currentTimeMillis();
     }
 
     //RAZ = Remise A Zero
@@ -29,19 +30,15 @@ public class TimerThread extends Thread {
 
     @Override
     public void run() {
-        Calendar calendar = Calendar.getInstance();
-        long startTime = System.currentTimeMillis();
-        while (true) {
-            try {
-                long currentTime = System.currentTimeMillis();
-                long yourmilliseconds = currentTime-startTime;
-                SimpleDateFormat formatDate = new SimpleDateFormat("mm:ss");
-                Date resultdate = new Date(yourmilliseconds);              
-                System.out.println(formatDate.format(resultdate));
-                System.out.println();
-            } catch (Exception E) {
-                System.err.println("erreur : " + E);
-            }
+        try {
+            long currentTime = System.currentTimeMillis();
+            long yourmilliseconds = currentTime-startTime;
+            SimpleDateFormat formatDate = new SimpleDateFormat("mm:ss");
+            Date resultdate = new Date(yourmilliseconds);              
+            System.out.println(formatDate.format(resultdate));
+            System.out.println();
+        } catch (Exception E) {
+            System.err.println("erreur : " + E);
         }
     }
 }
