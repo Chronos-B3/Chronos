@@ -5,7 +5,6 @@
  */
 package chronos;
 
-import Test.TestTimerThread;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
@@ -18,11 +17,11 @@ public class TimerRunnable implements Runnable {
 
     Calendar calendar = Calendar.getInstance();
     private long startTime;
-    public boolean isLaunch;
+    javax.swing.JLabel jLabelAffichage;
 
-    public TimerRunnable() {
+    public TimerRunnable(javax.swing.JLabel jLabelAffichage) {
         this.startTime = System.currentTimeMillis();
-        this.isLaunch = true;
+        this.jLabelAffichage = jLabelAffichage;
     }
 
     //RAZ = Remise A Zero
@@ -37,14 +36,18 @@ public class TimerRunnable implements Runnable {
     }
     
     public void loop(){
-        while(TestTimerThread.getLaunchValue()){
+        while(true){
             try {
+                if(Chronos.getStop()){
+                    break;
+                }
                 long currentTime = System.currentTimeMillis();
                 long yourmilliseconds = currentTime-startTime;
                 SimpleDateFormat formatDate = new SimpleDateFormat("mm:ss");
-                Date resultdate = new Date(yourmilliseconds);              
-                System.out.println(formatDate.format(resultdate));
-                System.out.println();
+                Date resultdate = new Date(yourmilliseconds);    
+                jLabelAffichage.setText(formatDate.format(resultdate));
+                //System.out.println(formatDate.format(resultdate));
+                //System.out.println();
             } catch (Exception E) {
                 System.err.println("erreur : " + E);
             }

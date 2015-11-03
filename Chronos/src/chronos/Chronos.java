@@ -1,6 +1,5 @@
 package chronos;
 
-import javax.swing.JLabel;
 
 /*
  * To change this license header, choose License Headers in Project Properties.
@@ -13,7 +12,9 @@ import javax.swing.JLabel;
  */
 public class Chronos extends javax.swing.JFrame {
 
-    private TimerThread temps;
+    private TimerRunnable temps;
+    private static boolean stop = false;
+    private static String labelToPrint = "00:00";
 
     /**
      * Creates new form NewJFrame
@@ -21,8 +22,8 @@ public class Chronos extends javax.swing.JFrame {
     public Chronos() {
         initComponents();
 
-        jLabelAffichage.setText("00:00");
-        temps = new TimerThread();
+        jLabelAffichage.setText(labelToPrint);
+        temps = new TimerRunnable(jLabelAffichage);
     }
 
     /**
@@ -145,21 +146,32 @@ public class Chronos extends javax.swing.JFrame {
             }
         });
     }
+    
+    public static void setLabelToPrint(String str){
+        labelToPrint = str;
+    }
+    
+    private void refresh(String str){
+        jLabelAffichage.setText(str);
+    }
+    
+    public static boolean getStop(){
+        return stop;
+    }
 
     private void debut() {
-        if(temps.isAlive()){
-            temps.run();
-        }else{
-            temps.start();
-        }
+        stop = false;
+        Thread t1 = new Thread(temps);
+        t1.start();
     }
 
     private void raz() {
-        this.temps = new TimerThread();
+        this.temps = new TimerRunnable(jLabelAffichage);
+        jLabelAffichage.setText("00:00");
     }
 
     private void stop() {
-        temps.interrupt();
+        stop = true;
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
